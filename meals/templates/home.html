@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  body{
+    background-image: url("{% static 'images/bg.jpg' %}");
+    background-size: cover;
+    z-index: 1;
+    background-attachment: fixed;
+    width: 100%;
+    color: white;
+
+  }
+  @media screen and (max-width:600px ){
+        body{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        
+    }
+  p{
+    font-size: 18px;
+  }
+  .container{
+    margin: 25px auto;
+  }
+</style>
+
+
+<div class="container">
+    <center> 
+      <h1 class="homeh py-md-5">Welcome to Food Reccomendation App</h1>
+      <h3>🥗 Importance of Food Recommendation in Disease Management</h3> 
+    </center><br>
+     <p>
+       In today’s fast-paced world, maintaining health goes beyond medical treatments — nutrition plays a critical role in both preventing and managing diseases. The right food choices can help reduce symptoms, improve quality of life, and even slow disease progression. That’s why our app is designed to offer personalized food recommendations based on your health conditions.
+     </p> 
+      <center>
+        <form method="get" action="meal_recommendations" class="form py-4">
+          <select name="disease" class="textbox pe-3 py-1">
+            <option value="none" disabled selected>Select a condition</option>
+            <option>Fever</option>
+            <option>Hyper Tension</option>
+            <option>Heart disease</option>
+            <option>Headache</option>
+            <option>Cold and Cough</option>
+            <option>Sore throat</option>
+          </select>
+          <button type="submit" name="meal_recommendations" class="btn btn-primary pe-3 ps-3 ms-3">Get Meals</button>
+        </form>
+      </center>
+
+        
+      
+     
+</div>
+
+{% endblock %}

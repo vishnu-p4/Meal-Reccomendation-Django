@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+
+
+{% block content %}
+<style>
+  body{
+    background-image: url("{% static 'images/meal_bg.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+
+  }
+  @media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+    align-items: center;
+  }
+
+ .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-5, .col-7 {
+  flex: 1 1 100%;
+}
+
+
+  .col-5,
+  .col-7 {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .box {
+    width: 80%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    height: 70vh;
+    
+  }
+
+  .img {
+    max-width: 65%;
+    height: 25vh;
+  }
+
+
+  .head {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 0.95rem;
+    padding: 0 5px;
+  }
+
+  .btn {
+    width: 30%;
+    font-size: 1rem;
+    
+  }
+
+  .modal-body {
+    font-size: 0.9rem;
+  }
+}
+
+
+</style>
+
+
+<center><h1 class="mealtop py-3">Foods Reccomended for {{ disease }}</h1></center>
+
+
+
+
+
+
+<!--Breakfast-->
+
+
+
+  <div class="container"> 
+    <center><h1 class="top mt-5">Breakfast</h1></center>
+    {% for meal in meal %}
+    {% if meal.category == "breakfast" %}
+    <center>
+          <div class="box mt-5">
+            <div class="row">
+                <div class="col-5" id="frame">
+                  {% if meal.image %}                  
+                  <img src="{{ meal.image.url }}" alt="{{ meal.name }}" height="200px" width="200px" class="img m-3"> 
+                  {% endif %}                                
+                </div>
+                <div class="col-7">
+                  <center><h6 class="head m-3">{{ meal.name }}</h6>
+                  <justify><p>{{ meal.description }}</p></justify>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollableModal">see details</button>
+                </div>
+              </div>
+            </div></center> 
+                  <!-- Scrollable modal -->
+
+        <div class="modal fade" id="scrollableModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="scrollableModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="scrollableModalLabel">Nutrients in Meal</h1>
+              </div>
+              <div class="modal-body">              
+                {% for key, value in meal.nutrients.items %}
+                  <li style="list-style-type: none;">{{ key }} : {{ value }}</li>
+                {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+                            
+      {% endif %}
+    {% endfor %} 
+  </div>
+
+
+
+
+
+
+
+<!--lunch-->
+
+
+<div class="container"> 
+    <center><h1 class="top mt-5">Lunch</h1></center>
+    {% for meal in meal %}
+    {% if meal.category == "lunch" %}
+    <center>
+          <div class="box mt-5">
+            <div class="row">
+                <div class="col-5" id="frame">
+                  {% if meal.image %}                  
+                  <img src="{{ meal.image.url }}" alt="{{ meal.name }}" height="200px"  width="200px" class="img m-3"> 
+                  {% endif %}                                
+                </div>
+                <div class="col-7">
+                  <center><h6 class="head m-3">{{ meal.name }}</h6>
+                  <justify><p>{{ meal.description }}</p></justify>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollableModal">see details</button></center>
+                </div>
+            </div>
+          </div>
+        </center>
+
+         <div class="modal fade" id="scrollableModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="scrollableModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="scrollableModalLabel">Nutrients in Meal</h1>
+              </div>
+              <div class="modal-body">              
+                {% for key, value in meal.nutrients.items %}
+                    <li style="list-style-type: none;">{{ key }} : {{ value }}</li>
+                {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      {% endif %}
+    {% endfor %} 
+  </div>
+
+
+
+
+
+<!--Dinner-->
+
+<div class="container"> 
+    <center><h1 class="top mt-5">Dinner</h1></center>
+    {% for meal in meal %}
+    {% if meal.category == "dinner" %}
+    <center>
+          <div class="box mt-5">
+            <div class="row">
+                <div class="col-5" id="frame">
+                  {% if meal.image %}                  
+                  <img src="{{ meal.image.url }}" alt="{{ meal.name }}" height="200px"  width="200px" class="img m-3"> 
+                  {% endif %}                                
+                </div>
+                <div class="col-7">
+                  <center><h6 class="head m-3">{{ meal.name }}</h6>
+                  <justify><p>{{ meal.description }}</p></justify>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollableModal">see details</button></center>
+                </div>
+             
+            </div>
+          </div>
+          </center>
+
+          <div class="modal fade" id="scrollableModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="scrollableModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="scrollableModalLabel">Nutrients in Meal</h1>
+              </div>
+              <div class="modal-body">              
+                {% for key, value in meal.nutrients.items %}
+                    <li style="list-style-type: none;">{{ key }} : {{ value }}</li>
+                {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      {% endif %}
+    {% endfor %} 
+  </div>
+
+  <!--completed-->
+
+
+
+
+
+
+{% endblock %}
+
+
