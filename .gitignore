@@ -1,5 +1,4 @@
 # Python
-*.pyc
 __pycache__/
 
 # Django
@@ -11,10 +10,7 @@ db.sqlite3
 env/
 
 
-# VS Code
-.vscode/
 
 
-# OS
-.DS_Store
-Thumbs.db
+
+
