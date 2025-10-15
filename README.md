@@ -20,6 +20,9 @@ The Meal Recommendation System is a web-based application built with Django, des
 ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)  
 ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white)
 
+
+
+Download Media files here : https://drive.google.com/file/d/1jtXCYbTJTNjXGG_-cWgR7zhJlih5p-su/view?usp=drive_link
 ---
 
 
